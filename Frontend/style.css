@@ -116,7 +116,7 @@ form div{
 
 .input:not(:placeholder-shown) {
   outline: none;
-  background-color: rgb(66, 66, 66);
+  background-color: #22253dc7;
   color: rgb(255, 255, 255);
 }
 
