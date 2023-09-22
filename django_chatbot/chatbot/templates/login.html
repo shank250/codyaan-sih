@@ -1,94 +1,372 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block title %}Login{% endblock %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Register & logIn</title>
+    <link rel="stylesheet" href="user_signin_signup.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap&family=Alkalami&family=Secular+One&display=swap&family=Lato:wght@900&display=swap&family=Titillium+Web:wght@900&display=swap&family=Aclonica:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
 
-{% block styles %}
-<style>
-  body {
-    background-color: #f0f0f0;
-  }
-  .login-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-  }
-  .card {
-    max-width: 400px;
-  }
-  .card-header {
-    background-color: #007bff;
-    color: white;
-    font-size: 24px;
-    font-weight: bold;
-    text-align: center;
-  }
-  .card-body {
-    padding: 30px;
-  }
-  .form-group {
-    margin-bottom: 20px;
-  }
-  label {
-    font-weight: bold;
-    display: block;
-    margin-bottom: 5px;
-  }
-  input[type=text], input[type=password] {
-    border-radius: 4px;
-    border: 1px solid #ccc;
-    padding: 10px;
-    font-size: 16px;
-    width: 100%;
+* {
     box-sizing: border-box;
-    margin-bottom: 10px;
-  }
-  button[type=submit] {
-    background-color: #007bff;
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    width: 100%;
-  }
-  button[type=submit]:hover {
-    background-color: #0062cc;
-  }
-  .alert-danger {
-    background-color: #f8d7da;
-    color: #721c24;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #f5c6cb;
-    border-radius: 4px;
-  }
-</style>
-{% endblock %}
+    margin: 0;
+    padding: 0;
+    transition: all 0.4s;
+    font-family: 'Poppins', sans-serif;
+}
 
-{% block content %}
-<div class="login-container">
-  <div class="card">
-    <div class="card-header">Login</div>
-    <div class="card-body">
-      {% if error_message %}
-        <div class="alert alert-danger" role="alert">{{ error_message }}</div>
-      {% endif %}
-      <form method="post">
-        {% csrf_token %}
-        <div class="form-group">
-          <label for="username">Username</label>
-          <input type="text" class="form-control" id="username" name="username" required>
+:root {
+    --aclonica: 'Aclonica', sans-serif;
+    --bungee: 'Bungee Spice', Copperplate, Papyrus, fantasy, cursive;
+}
+
+body {
+    background-color: rgb(255, 255, 255);
+    max-height: 100vh;
+    max-width: 100vw;
+}
+
+header {
+    height: 8vh;
+    height: 8svh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    width: 100%;
+    margin-top: 2em;
+    padding: 0 5em;
+    position: relative;
+}
+
+.logo p {
+    position: absolute;
+    padding: 4em;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgb(37, 37, 37);
+    font-family: var(--aclonica)
+}
+
+.logo img {
+    /* background-color: aliceblue; */
+    height: 10vh;
+    object-fit: contain;
+    mix-blend-mode: difference;
+}
+
+section {
+    height: 90vh;
+    height: 90svh;
+}
+
+.main {
+    display: grid;
+    place-items: center;
+}
+
+container {
+    height: 80%;
+    width: 60%;
+    background-color: rgb(250, 214, 214);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    overflow: hidden;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 14px 28px,
+        rgba(0, 0, 0, 0.22) 0px 10px 10px;
+    position: relative;
+}
+
+.card-img {
+    background-color: #f26522;
+    color: white;
+    display: grid;
+    place-items: center;
+}
+
+.log-in-text,
+.sign-up-text {
+    height: 10%;
+}
+
+.form {
+    padding: 3em 2em;
+}
+
+.form-text {
+    margin-top: 0.3em;
+    width: 90%;
+    display: grid;
+    grid-auto-rows: 2em 3em;
+    gap: 10px;
+    /* justify-content: center; */
+}
+
+form div {
+    font-size: .8em;
+    text-align: center;
+}
+
+.form-text>p {
+    align-self: end;
+}
+
+.disabled {
+    display: none;
+}
+
+.input::placeholder {
+    font-size: 1.1em;
+}
+
+.input {
+    font-size: 0.8em;
+    background-color: rgb(246, 246, 246);
+    border: none;
+    border-radius: 5px;
+    padding: 0 2vh;
+    color: rgb(0, 0, 0);
+}
+
+.input:focus,
+.input {
+    outline: rgba(46, 46, 46, 0.582) solid 2px;
+    border: none;
+}
+
+.input:not(:placeholder-shown) {
+    outline: none;
+    background-color: rgb(66, 66, 66);
+    color: rgb(255, 255, 255);
+}
+
+.input:not(:placeholder-shown):focus {
+    outline: rgba(255, 255, 255, 0.459) solid 2px;
+}
+
+.input::placeholder {
+    font-size: 1.1em;
+}
+
+.select-input {
+    font-size: 0.9em;
+    background-color: rgb(246, 246, 246);
+    border: none;
+    border-radius: 5px;
+    padding: 2vh;
+    color: rgb(0, 0, 0);
+}
+
+.select-input:focus,
+.select-input {
+    outline: rgba(46, 46, 46, 0.582) solid 1px;
+    border: none;
+    background-color:rgba(46, 46, 46, 0.877) ;
+    color: white;
+}
+
+/* .select-input:not(:value_1-shown) {
+    outline: none;
+    background-color: rgb(66, 66, 66);
+    color: rgb(255, 255, 255);
+} */
+
+/* .select-input:not(:value_1-shown):focus {
+    outline: rgba(255, 255, 255, 0.459) solid 2px;
+} */
+
+.log-in .form button {
+    grid-row-start: 5;
+    grid-row-end: 8;
+}
+
+.sign-up .form button {
+    grid-row-start: 17;
+    grid-row-end: 19;
+}
+
+/* body:has(.selected) .sign-up .form button {
+  grid-row-start: 15;
+  grid-row-end: 17;
+} */
+.form button {
+    border-radius: 5px;
+    height: 55px;
+    width: max-content;
+    justify-self: center;
+    align-self: center;
+    padding: 0 2em;
+    font-size: clamp(1em, 1.5vw, 1.5em);
+    background-color: #f26522;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+.sign_up_link {
+    color: blue;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.sign-up .form {
+    overflow-y: scroll;
+    height: 80%;
+      /* box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px,
+    rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px,
+    rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px; */
+}
+
+.sign-up .login-link {
+    position: absolute;
+    top: 90%;
+    left: 75%;
+    transform: translate(-50%, -50%);
+}
+
+.bank_name {
+    display: none;
+}
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="assets/logo.png" alt="logo">
+            <p>Codyaan</p>
         </div>
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input type="password" class="form-control" id="password" name="password" required>
-        </div>
-        <button type="submit">Login</button>
-      </form>
-    </div>
-  </div>
-</div>
-{% endblock %}
+    </header>
+    <section class="main">
+        <container class="log-in disabled">
+            <div class="card-img">
+                <div class="log-in-text">
+                    <h1 style="font-size: 2em;line-height: 1.4;">Welcome to Our Site</h1>
+                    <p style="font-size: 1em;">Please fill the log-in form</p>
+                </div>
+                <!-- <img src="assets/log-in.png" alt=""> -->
+            </div>
+            <div class="form">
+                <h1>Log-in : </h1>
+                <form class="form-text" method="POST">
+                    {% csrf_token %}
+                    <p>User-id / Mobile Number</p>
+                    <input type="text" name="username"  placeholder="Enter your user-id / mobile number" class="input">
+                    <p>Password</p>
+                    <input type="password" name="password" placeholder="Enter your password" class="input">
+                    <button type="submit">Log-in</button>
+                    <div>
+                        <p>
+                            Don't have an account ?
+                        </p>
+                        <p>
+                            <span class="sign_up_link" id="signup_show" onclick="signup_show()"><i>Sign up
+                                    here</i></span>
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </container>
+        <container class="sign-up ">
+            <div class="card-img ">
+                <div class="sign-up-text">
+                    <h1 style="font-size: 2em;line-height: 1.4;">Welcome to Our Site</h1>
+                    <p style="font-size: 1em;">Please fill the sign-up form</p>
+                </div>
+                <!-- <img src="assets/sign-up.png" alt=""> -->
+            </div>
+            <div class="form">
+                <h1>Sign-up : </h1>
+                <form class="form-text" method="POST" autocomplete="off">
+                    {% csrf_token %}
+                    <p>Full Name</p>
+                    <input type="text" name="username" placeholder="Enter your full name" class="input">
+                    <p>User-id</p>
+                    <input type="text" name="Password" placeholder="Enter Employee ID" class="input">
+
+                    <!-- <label for="phone">Phone Number (up to 10 digits):</label> -->
+                    <p>Mobile Number</p>
+                    <input type="number" id="phone" class="input" name="phone" placeholder="Enter Your Mobile Number" oninput="validatePhone(this)" autocomplete="none" >
+                    <!-- <span id="phoneError" style="color: red;"></span> -->
+
+                    <!-- <p>Mobile Number</p>
+                    <input type="tel" maxlength="10" name="number" placeholder="Enter Mobile Number without country code " class="input" autocomplete="none"> -->
+                    <p>Email-id</p>
+                    <input type="email" name="email" placeholder="Enter your Email-id" class="input"
+                        autocomplete="none">
+                    <p>Password</p>
+                    <input type="password" minlength="8" name="password1" placeholder="Enter Your Password "
+                        class="input">
+                    <p>Confirm Password</p>
+                    <input type="password" name="password2" placeholder="Re-Enter Your Password " class="input">
+                    <p>Adhaar Number</p>
+                    <input type="number" id="phone" class="input" name="phone" placeholder="Enter Your Adhaar Number" oninput="validateAdhaarNumber(this)" autocomplete="none" >
+                    <p>Language</p>
+                    <select class="select-input">
+                        <option value_1="">Select your Language</option>
+                        <option value="">हिन्दी</option>
+                        <option value="">English</option>
+                        <option value="">বাংলা</option>
+                        <option value="">मराठी</option>
+                    </select>
+                    <button type="submit">Register</button>
+                </form>
+            </div>
+            <div class="login-link">
+                <p>
+                    Already have an account ? <span class="sign_up_link" id="signin_show"
+                        onclick="signin_show()"><i>Log-in here</i></span>
+                </p>
+            </div>
+        </container>
+    </section>
+    <script src="user_signin_signup.js"></script>
+    <script>
+        
+
+function signup_show() {
+    document.querySelector(".log-in").classList.add("disabled")
+    document.querySelector(".sign-up").classList.remove("disabled")
+}
+
+function signin_show() {
+    document.querySelector(".log-in").classList.remove("disabled")
+    document.querySelector(".sign-up").classList.add("disabled")
+}
+
+
+
+
+function validatePhone(input) {
+    const maxLength = 10;
+    const inputValue = input.value.toString();
+
+    if (inputValue.length > maxLength) {
+        // document.getElementById('phoneError').textContent = 'Phone number should be up to 10 digits.';
+        input.value = inputValue.slice(0, maxLength); // Truncate input
+    } else {
+        document.getElementById('phoneError').textContent = '';
+    }
+}
+function validateAdhaarNumber(input) {
+    const maxLength = 12;
+    const inputValue = input.value.toString();
+
+    if (inputValue.length > maxLength) {
+        // document.getElementById('phoneError').textContent = 'Phone number should be up to 10 digits.';
+        input.value = inputValue.slice(0, maxLength); // Truncate input
+    } else {
+        document.getElementById('phoneError').textContent = '';
+    }
+}
+    </script>
+</body>
+</html>
+
