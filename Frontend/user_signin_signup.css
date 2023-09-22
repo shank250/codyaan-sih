@@ -178,8 +178,8 @@ form div {
 }
 
 .sign-up .form button {
-    grid-row-start: 17;
-    grid-row-end: 19;
+    grid-row-start: 19;
+    grid-row-end: 21;
 }
 
 /* body:has(.selected) .sign-up .form button {
