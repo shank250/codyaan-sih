@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Register & logIn</title>
+    <link rel="stylesheet" href="user_signin_signup.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="assets/logo.png" alt="logo">
+            <p>Codyaan</p>
+        </div>
+    </header>
+    <section class="main">
+        <container class="log-in disabled">
+            <div class="card-img">
+                <div class="log-in-text">
+                    <h1 style="font-size: 2em;line-height: 1.4;">Welcome to Our Site</h1>
+                    <p style="font-size: 1em;">Please fill the log-in form</p>
+                </div>
+                <!-- <img src="assets/log-in.png" alt=""> -->
+            </div>
+            <div class="form">
+                <h1>Log-in : </h1>
+                <form class="form-text">
+                    <p>User-id / Mobile Number</p>
+                    <input type="text" name="User-id" placeholder="Enter your user-id / mobile number" class="input">
+                    <p>Password</p>
+                    <input type="password" name="Password" placeholder="Enter your password" class="input">
+                    <button type="submit">Log-in</button>
+                    <div>
+                        <p>
+                            Don't have an account ?
+                        </p>
+                        <p>
+                            <span class="sign_up_link" id="signup_show" onclick="signup_show()"><i>Sign up
+                                    here</i></span>
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </container>
+        <container class="sign-up ">
+            <div class="card-img ">
+                <div class="sign-up-text">
+                    <h1 style="font-size: 2em;line-height: 1.4;">Welcome to Our Site</h1>
+                    <p style="font-size: 1em;">Please fill the sign-up form</p>
+                </div>
+                <!-- <img src="assets/sign-up.png" alt=""> -->
+            </div>
+            <div class="form">
+                <h1>Sign-up : </h1>
+                <form class="form-text" autocomplete="off">
+                    <p>Full Name</p>
+                    <input type="text" name="User-id" placeholder="Enter your full name" class="input">
+                    <p>User-id</p>
+                    <input type="text" name="Password" placeholder="Enter Employee ID" class="input">
+
+                    <!-- <label for="phone">Phone Number (up to 10 digits):</label> -->
+                    <p>Mobile Number</p>
+                    <input type="number" id="phone" class="input" name="phone" placeholder="Enter Your Mobile Number" oninput="validatePhone(this)" autocomplete="none" >
+                    <!-- <span id="phoneError" style="color: red;"></span> -->
+
+                    <!-- <p>Mobile Number</p>
+                    <input type="tel" maxlength="10" name="number" placeholder="Enter Mobile Number without country code " class="input" autocomplete="none"> -->
+                    <p>Email-id</p>
+                    <input type="email" name="Password" placeholder="Enter your Email-id" class="input"
+                        autocomplete="none">
+                    <p>Password</p>
+                    <input type="password" minlength="8" name="Password" placeholder="Enter Your Password "
+                        class="input">
+                    <p>Confirm Password</p>
+                    <input type="password" name="Password" placeholder="Re-Enter Your Password " class="input">
+                    <p>Adhaar Number</p>
+                    <input type="number" id="phone" class="input" name="phone" placeholder="Enter Your Adhaar Number" oninput="validateAdhaarNumber(this)" autocomplete="none" >
+                    <p>Language</p>
+                    <select class="select-input">
+                        <option value_1="">Select your Language</option>
+                        <option value="">हिन्दी</option>
+                        <option value="">English</option>
+                        <option value="">বাংলা</option>
+                        <option value="">मराठी</option>
+                    </select>
+                    <button type="submit">Register</button>
+                </form>
+            </div>
+            <div class="login-link">
+                <p>
+                    Already have an account ? <span class="sign_up_link" id="signin_show"
+                        onclick="signin_show()"><i>Log-in here</i></span>
+                </p>
+            </div>
+        </container>
+    </section>
+    <script src="user_signin_signup.js"></script>
+</body>
+
+</html>
