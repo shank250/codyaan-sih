@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="employee_profile.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <nav>
+        <div class="nav_logo">
+            <img src="assets/logo.png" alt="logo">
+            <p>Codyaan</p>
+        </div>
+        <div class="nav_list">
+            <div>Home</div>
+            <div>Dashboard</div>
+            <div>FAQs</div>
+            <div class="active">Profile</div>
+        </div>
+    </nav>
+    <section>
+        <div class="profile">
+            <div class="image">
+                <img src="assets/profile.png" alt="" id="profile_pic">
+                <input type="file" accept="image/*" id="profile_pic_add"><label for="profile_pic_add">
+                    <div class="input_image"></div>
+                </label>
+            </div>
+            <div class="name">User Name</div>
+            <div class="mini_details">
+                <div>
+                    <h5>Name</h5>
+                    <p>Your Full Name</p>
+                </div>
+                <div>
+                    <h5>User id</h5>
+                    <p>Your User id</p>
+                </div>
+                <div>
+                    <h5>Address</h5>
+                    <p>Your Address</p>
+                </div>
+            </div>
+            <div class="complaint_track">
+                <div class="completed">
+                    <h5>Solved Complaints</h5>
+                    <p>50</p>
+                </div>
+                <div class="pending">
+                    <h5>Pending Complaints</h5>
+                    <p>10</p>
+                </div>
+            </div>
+        </div>
+        <div class="details">
+            <div class="employee_details">
+                <div class="card personal_details">
+                    <form action="" >
+                        <h5>Personal Details :</h5>
+                        <button type="button" class="edit" id="edit">Edit</button>
+                        <div class="content">
+                            <p>Name</p>
+                            <input type="text" name="" value="Aryan Srivastava" autocomplete="no"  class="editable" disabled>
+                            <p>User-id</p>
+                            <input type="text" name="" value="Aryan Srivloremfgrgfrg34vfgdfgdg t trg trgtrastava" autocomplete="no"  class="editable" disabled>
+                            <p>Mobile Number</p>
+                            <input type="number" id="phone" class="editable" name="phone" placeholder="Enter Your Mobile Number" oninput="validatePhone(this)" autocomplete="none" disabled >
+                            <p>Email-id</p>
+                            <input type="email" name="" value="Aryan Srivloremfgrgfrg34vfgdfgdg t trg trgtrastava" autocomplete="no"  class="editable" disabled>
+                            <p>Password</p>
+                            <input type="password" name="" value="Aryan Srivastava" autocomplete="no"  class="editable" disabled>
+                            <p>Language</p>
+                            <input type="text" name="" value="Aryan Srivastava" autocomplete="no"  class="editable" disabled>
+                            <p>Workfield</p>
+                            <input type="text" name="" value="Aryan Srivloremfgrgfrg34vfgdfgdg t trg trgtrastava" autocomplete="no"  class="editable" disabled>
+                            <p>Designation</p>
+                            <input type="text" name="" value="Aryan Srivastava" autocomplete="no"  class="editable" disabled>
+                            <p>Complaint Specialisation</p>
+                            <input type="text" name="" value="Aryan Srivastava" autocomplete="no"  class="editable" disabled>
+                        </div>
+                        <button type="submit" class="edit_submit">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+<script src="employee_profile.js"></script>
+
+</html>
