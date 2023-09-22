@@ -4,104 +4,176 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Employee Register</title>
-    <link rel="stylesheet" href="style.css">
+    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> -->
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="chatbot.css">
 </head>
 
 <body>
-    <header>
-        <div class="logo">
+    <!-- {% endblock %} -->
+    <!-- {% block content %} -->
+    <nav>
+        <div class="nav_logo">
             <img src="assets/logo.png" alt="logo">
             <p>Codyaan</p>
         </div>
-    </header>
-    <section class="main">
-        <container class="log-in disabled">
-            <div class="card-img">
-                <div class="log-in-text">
-                    <h1 style="font-size: 2em;line-height: 1.4;">Welcome to Our Site</h1>
-                    <p style="font-size: 1em;">Please fill the log-in form</p>
-                </div>
-                <!-- <img src="assets/log-in.png" alt=""> -->
+        <div class="nav_list">
+            <div>Home</div>
+            <div class="active">Rasie a complaint</div>
+            <div>Dashboard</div>
+            <div>Profile</div>
+        </div>
+    </nav>
+    <section>
+        <div class="sidebar">
+            <h2>History</h2>
+            <div class="graviences">
+                <form>
+                    <p class="complaint_name">Lorem ipsum dolor sit amet consectetur </p>
+                    <status><img src="assets/peding.png" alt=""></status>
+                </form>
             </div>
-            <div class="form">
-                <h1>Log-in : </h1>
-                <form class="form-text">
-                    <p>User-id / Mobile Number</p>
-                    <input type="text" name="User-id" placeholder="Enter your user-id / mobile number"
-                        class="input">
-                    <p>Password</p>
-                    <input type="password" name="Password" placeholder="Enter your password" class="input">
-                    <button type="submit">Log-in</button>
-                    <div>
-                        <p>
-                            Don't have an account ?
-                        </p>
-                        <p>
-                            <span class="sign_up_link" id="signup_show" onclick="signup_show()"><i>Sign up here</i></span>
-                        </p>
+        </div>
+        <div class="chatbot chat-container">
+            <!-- {% if user.is_authenticated %} -->
+            <h3 class="card-header">Welcome, {{user.username}}</h3>
+            <!-- {% else %} -->
+
+            <!-- {% endif %} -->
+            <div class="card-body messages-box" id="message_box">
+                <ul class="list-unstyled messages-list" messages-list>
+                    <li class="message received">
+                        <div class="message-text">
+                            <div class="message-sender">
+                                <b>Hello</b>
+                            </div>
+                            <div class="message-content">
+                                Hi {{user.username}}, I am your AI Chatbot, you can ask me anything.
+                            </div>
+                        </div>
+                    </li>
+
+                    <!-- {% for chat in chats %} -->
+                    <!-- {% if chat.user == request.user %} -->
+
+                    <li class="message sent">
+                        <div class="message-text">
+                            <div class="message-sender">
+                                <b>You</b>
+                            </div>
+                            <div class="message-content">
+                                <!-- {{chat.message}} -->
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="message received">
+                        <div class="message-text">
+                            <div class="message-sender">
+                                <b>AI Chatbot</b>
+                            </div>
+                            <div class="message-content">
+                                <!-- {{chat.response}} -->
+                            </div>
+                        </div>
+                    </li>
+                    <!-- {% endif %} -->
+                    <!-- {% endfor %} -->
+                </ul>
+                <input type="text" id="show" style="visibility: hidden;">
+            </div>
+            <div class="documents">
+                <div class="document">
+                    <input type="file" style="display: none;" id="img" alt=""><label for="img" class="img"></label>
+                    <p>Aadhar</p>
+                </div>
+            </div>
+            <form class="message-form">
+                <!-- {%csrf_token%} -->
+                <div class="input-group">
+                    <div class="input">
+                        <input type="text" class="form-control message-input" placeholder="Type your message">
+                        <div>
+                            <p><button id="record" class=""></button></p>
+                        </div>
                     </div>
-                </form>
-            </div>
-        </container>
-        <container class="sign-up ">
-            <div class="card-img ">
-                <div class="sign-up-text">
-                    <h1 style="font-size: 2em;line-height: 1.4;">Welcome to Our Site</h1>
-                    <p style="font-size: 1em;">Please fill the sign-up form</p>
+                    <div class="input-group-append">
+                        <button type="submit" class="btn btn-primary btn-send">Send</button>
+                    </div>
                 </div>
-                <!-- <img src="assets/sign-up.png" alt=""> -->
-            </div>
-            <div class="form">
-                <h1>Sign-up : </h1>
-                <form class="form-text" autocomplete="off">
-                    <p>Full Name</p>
-                    <input type="text" name="User-id" placeholder="Enter your full name"
-                        class="input">
-                    <p>Employee ID</p>
-                    <input type="text" name="Password" placeholder="Enter Employee ID" class="input">
-                    <p>Mobile Number</p>
-                    <input type="tel" maxlength="10" name="Password" placeholder="Enter Mobile Number without country code " class="input" autocomplete="none">
-                    <p>Email-id</p>
-                    <input type="email" name="Password" placeholder="Enter your Email-id" class="input" autocomplete="none">
-                    <p>Password</p>
-                    <input type="password" minlength="8" name="Password" placeholder="Enter Your Password " class="input">
-                    <p>Confirm Password</p>
-                    <input type="password" name="Password"  placeholder="Re-Enter Your Password " class="input">
-                    <p>Workfield</p>
-                    <select id="zoneselect" onclick="updateInfo()" >
-                        <option value="">Enter your Workfield</option>
-                        <option value="Banking sector" >Banking sector</option>
-                        <option value="" onclick="openmuni()">Municipality</option>
-                        <!-- <option value=""></option>
-                        <option value=""></option> -->
-                    </select>
-                    <p class="bank_name">Bank Name</p>
-                    <select class="bank_name">
-                        <option value="">Enter your bank name</option>
-                        <option value="">SBI</option>
-                        <option value="">HDFC</option>
-                        <!-- <option value=""></option>
-                        <option value=""></option> -->
-                    </select>
-                    <p>Workplace</p>
-                    <input type="text" name="Password" placeholder="Enter Your Workplace " class="input">
-                    <p>Designation</p>
-                    <input type="text"  name="Password" placeholder="Enter Your Designation " class="input">
-                    <p>Language</p>
-                    <input type="text" name="Password" placeholder="Enter Your Language " class="input">
-                    <p>Complaint Specialisation</p>
-                    <input type="text" name="Password" placeholder="Enter Your Complaint Specialisation" class="input">
-                    <button type="submit">Sign-up</button>
-                </form>
-            </div>
-            <div class="login-link">
-                <p>
-                    Already have an account ? <span class="sign_up_link" id="signin_show" onclick="signin_show()"><i>Log-in here</i></span>
-                </p>
-            </div>
-        </container>
+            </form>
+        </div>
     </section>
-    <script src="script.js"></script>
+    <!-- {% block content %}{% endblock %} -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <!-- {% block scripts %}{% endblock %} -->
+    <script>
+        const messagesList = document.querySelector('.messages-list');
+        const messageForm = document.querySelector('.message-form');
+        const messageInput = document.querySelector('.message-input');
+        // document.addEventListener("keydown", () => {
+        //     messageInput.focus();
+        // })
+
+        messageForm.addEventListener('submit', (event) => {
+            event.preventDefault();
+            const message = messageInput.value.trim();
+            if (message.length === 0) {
+                return;
+            }
+            const messageItem = document.createElement('li');
+            messageItem.classList.add('message', 'sent');
+            messageItem.innerHTML = `
+              <div class="message-text">
+                  <div class="message-sender">
+                      <b>You</b>
+                  </div>
+                  <div class="message-content">
+                      ${message}
+                  </div>
+              </div>`;
+            messagesList.appendChild(messageItem);
+            messageInput.value = '';
+            fetch('', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams({
+                    // 'csrfmiddlewaretoken': document.querySelector('[name=csrfmiddlewaretoken]').value,
+                    'message': message
+                })
+            })
+                .then(response => response.json())
+                .then(data => {
+                    const response = data.response;
+                    const messageItem = document.createElement('li');
+                    messageItem.classList.add('message', 'received');
+                    messageItem.innerHTML = `
+              <div class="message-text">
+                  <div class="message-sender">
+                    <b>AI Chatbot</b>
+                  </div>
+                  <div class="message-content">
+                      ${response}
+                  </div>
+              </div>
+                `;
+                    messagesList.appendChild(messageItem);
+                });
+            var child = document.getElementById("show").getBoundingClientRect().top;
+            document.getElementById("message_box").scrollTop = child;
+        });
+        document.getElementById("record").onclick = ()=>{
+            document.getElementById("src").setAttribute("src","voice.js");
+        }
+    </script>
+    <script id="src"></script>
+    <script
+        src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+        crossorigin="anonymous"></script>
+    <!-- {% endblock %} -->
 </body>
+
 </html>
