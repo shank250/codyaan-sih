@@ -9,9 +9,9 @@
 }
 :root {
   --aclonica: "Aclonica", sans-serif;
-  --color: #f26522;
+  --color: #23779b;
   --gravience_div: aliceblue;
-  --graviences_div_active: #22253dc7;
+  --graviences_div_active: #29183dc7;
 }
 body {
   background-color: rgb(255, 255, 255);
@@ -115,10 +115,23 @@ section {
 .graviences .active status img {
   filter: invert(1);
 }
+
+.gravience::-webkit-scrollbar-thumb {
+    background-color: rgb(116, 116, 116);
+    border: 4px solid transparent;
+    border-radius: 8px;
+    background-clip: padding-box;  
+  }
+  
+  .gravience::-webkit-scrollbar {
+    width: 16px;
+  }
+  
 .gravience {
   background-color: whitesmoke;
   border-radius: 10px;
   overflow-y: scroll;
+  /* overflow-x: hidden; */
 }
 .gravience h3 {
   font-size: x-large;
@@ -163,6 +176,7 @@ section {
   color: rgba(0, 0, 0, 0.615);
 }
 .documents > div {
+  padding-top: .5em;
   display: grid;
   grid-template-columns: 1fr 1fr;
   row-gap: 10px;
