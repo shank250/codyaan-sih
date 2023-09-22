@@ -9,7 +9,17 @@ const complaintSchema = new mongoose.Schema({
         type: String,
         // required: true
     },
+    username:{
+        type:String
+    },
+    userLocation:{
+        type:String
+    },
     complaint :{
+        type: String,
+        // required: true
+    },
+    bank:{
         type: String,
         // required: true
     },
@@ -17,10 +27,25 @@ const complaintSchema = new mongoose.Schema({
         type: String,
         // required: true
     },
-    tag:{
+    type:{
         type: String,
         // required: true
-    }
+    },
+    documents:{
+        type: [
+            {
+                documentName: {
+                    type: String,
+                    // required: true
+                },
+                documentUrl: {
+                    type: String,
+                    // required: true
+                }
+            }
+        ]
+        // required: true
+    },
 });
 
 const Complaint = new mongoose.model("Complaint", complaintSchema);

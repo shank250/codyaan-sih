@@ -6,12 +6,13 @@
   box-sizing: border-box;
   transition: all 0.4s;
   font-family: "Poppins", sans-serif;
+  overflow-x: hidden;
 }
 :root {
   --aclonica: "Aclonica", sans-serif;
-  --color: #23779b;
+  --color: rgb(0, 104, 74);
   --gravience_div: aliceblue;
-  --graviences_div_active: #29183dc7;
+  --graviences_div_active: rgb(2, 52, 48);
 }
 body {
   background-color: rgb(255, 255, 255);
@@ -29,6 +30,9 @@ nav {
 a{
   text-decoration: none;
   color: black;
+}
+.active a,.nav_list div:hover a{
+  color: white;
 }
 .nav_logo {
   width: 50%;
@@ -87,32 +91,38 @@ section {
 .graviences {
   width: 100%;
 }
-.graviences form {
+.graviences form{
+  padding: 0 1em;
+}
+.graviences form button {
   display: grid;
   background-color: var(--gravience_div);
+  width: 100%;
   grid-template-columns: 80% 20%;
   height: 6vh;
-  margin: 1em;
+  margin: 1em 0;
   align-items: center;
   padding-left: 1em;
   border-radius: 5px;
   color: black;
   cursor: pointer;
+  border: none;
 }
-.graviences form p {
+.graviences form button p {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  font-size: large;
 }
-.graviences form status {
+.graviences form  button status {
   display: grid;
   place-items: center;
 }
-.graviences form status img {
+.graviences form button status img {
   height: 4vh;
   object-fit: contain;
 }
-.graviences .active {
+.graviences .active button{
   background-color: var(--graviences_div_active);
   color: white;
 }
@@ -135,7 +145,9 @@ section {
   background-color: whitesmoke;
   border-radius: 10px;
   overflow-y: scroll;
-  /* overflow-x: hidden; */
+  position: relative;
+  /* margin: 0 1em; */
+  /* width: 100%; */
 }
 .gravience h3 {
   font-size: x-large;
@@ -145,15 +157,15 @@ section {
 .brief {
   border-radius: 5px;
   font-size: large;
-  margin: .5em;
   /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
   padding: 1em;
 }
-.card {
+.cards {
   /* box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; */
+  width: 100%;
   padding: 1em;
 }
-.card h4 {
+.cards h4 {
   padding-left: 1.5em;
   margin-bottom: .5em;
 }
@@ -210,11 +222,15 @@ section {
   background-color: rgb(108, 108, 108);
 }
 .gravience_button{
-    margin: 1.5em 0;
+    margin: 3em 0;
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: end;
+    padding-right: 3em;
     gap: 5em;
+    height: 15%;
+    top: 75%;
+    align-items: end;
 }
 .gravience_button button{
     cursor: pointer;

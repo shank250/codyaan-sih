@@ -4,14 +4,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="/assets/logo.png" type="image/x-icon">
     <title>Document</title>
+    <link rel="shortcut icon" href="/assets/logo.png" type="image/x-icon">
     <link rel="stylesheet" href="/css/employee_dashboard.css">
 </head>
 <body>
     <nav>
         <div class="nav_logo">
-            <img src="assets/logo.png" alt="logo">
+            <img src="/assets/logo.png" alt="logo">
             <p>Codyaan</p>
         </div>
         <div class="nav_list">
@@ -25,81 +25,61 @@
         <div class="sidebar">
             <h2>Graviences</h2>
             <div class="graviences">
-                <form>
-                    <p class="complaint_name">Lorem ipsum dolor sit amet consectetur </p>
-                    <status><img src="assets/peding.png" alt=""></status>
-                </form>
-                <form>
-                    <p class="complaint_name">Lorem fiejfe iejfeifjei f </p>
-                    <status><img src="assets/completed.png" alt=""></status>
-                </form>
-                <form class="active">
-                    <p class="complaint_name">Lorem frojrit rigjrigjri gr </p>
-                    <status><img src="assets/peding.png" alt=""></status>
-                </form>
-                <form>
-                    <p class="complaint_name">Lorem ifeoire eo ie vheu </p>
-                    <status><img src="assets/completed.png" alt=""></status>
-                </form>
-                <form>
-                    <p class="complaint_name">Lorem ipsvrfhrf feiur eire</p>
-                    <status><img src="assets/completed.png" alt=""></status>
-                </form>
+                <% complaints.forEach(complaint => { %>
+                    <form action="/employeeDashboard/<%= complaint.id %>" method="post" >
+                        <button type="submit">
+                            <p class="complaint_name" id="complaint_name" data-set="<%= complaint.id %>"><%= complaint.username %></p>
+                            <status><img src="/assets/<%= complaint.status %>.png" alt=""></status>
+                        </button>
+                    </form>
+                <% }); %>
+                
             </div>
         </div>
-        <div class="gravience">
-            <h3 id="complaint"></h3>
-            <div class="brief card">
+        <div class="gravience" >
+            <% if(complaint){ %>
+            <h3 id="complaint" data-set="<%= complaint.id %>"><%= complaint.username %></h3>
+            <div class="brief cards">
                 <h4>Brief :</h4>
                 <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ad soluta dicta necessitatibus, eaque
-                    rem accusamus amet rerum cum, nam dolor porro dolores, adipisci repellendus voluptatem natus
-                    officia quidem non. Esse.
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima, error.
+                    <%= complaint.complaint %>
                 </p>
             </div>
-            <div class="user_details card">
+            <div class="user_details cards">
                 <h4>User Details :</h4>
                 <div>
                     <p class="heading">Name</p>
-                    <p class="text">Aryan Srivastava</p>
-                    <p class="heading"> Class</p>
-                    <p class="text">5th</p>
+                    <p class="text"><%= complaint.username %></p>
+                    <p class="heading">Email</p>
+                    <p class="text"><%= complaint.userId %></p>
                     <p class="heading">Bank</p>
-                    <p class="text">SBI</p>
-                    <p class="heading">Branch</p>
-                    <p class="text">Noida</p>
-                    <p class="heading">Account Number</p>
-                    <p class="text">101202020330</p>
-                    <p class="heading"></p>
-                    <p class="text"></p>
+                    <p class="text"><%= complaint.bank %></p>
+                    <p class="heading">Location</p>
+                    <p class="text"><%= complaint.userLocation %></p>
                 </div>
             </div>
-            <div class="documents card">
+            <div class="documents cards">
                 <h4>Documents :</h4>
                 <div>
-                    <div class="document">
-                        <img src="assets/document.png">
-                        <p>Aadhar</p>
-                    </div>
-                    <div class="document">
-                        <img src="assets/document.png">
-                        <p>Passbook</p>
-                    </div>
-                    <div class="document">
-                        <img src="assets/document.png">
-                        <p>Pan card</p>
-                    </div>
-                    <div class="document">
-                        <img src="assets/document.png">
-                        <p>Aadhar</p>
-                    </div>
+                    <% (complaint.documents).forEach(document => { %>
+                        <a href="http://<%= document.documentUrl %>" target="_blank">
+                            <div class="document">
+                                <img src="/assets/document.png">
+                                <p><%= document.documentName %></p>
+                            </div>
+                        </a>
+                    <% }); %>
                 </div>
             </div>
             <div class="gravience_button">
-                <button type="submit" class="completed">Mark as completed</button>
+                <% if(complaint.status == 'pending'){ %>    
+                    <form action="/employeeDashboard/<%= complaint.id %>/updateStatus" method="post">
+                        <button type="submit" class="completed">Mark as completed</button>
+                    </form>
+                <% } %>
                 <button type="submit" class="authority">Forward to higher Authority</button>
             </div>
+            <%}%>
         </div>
     </section>
 </body>

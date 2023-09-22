@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 
 const User = require('../model/userSchema');
 const Employee = require('../model/employeeSchema');
+const Complaint = require('../model/complaintSchema');
 const router = express.Router();
 
 const bank_name = require('../extraAsset/bank');
@@ -19,8 +20,32 @@ router.get('/employeeDashboard',checkAuthenticated,async(req,res)=>{
     try{
         const id = req.user.id;
         const employee = await Employee.findById(id);
-        res.status(200).render('employee_dashboard',{employee:employee});
+        const complaints = await Complaint.find({employeeId:employee.username});
+        res.status(200).render('employee_dashboard',{employee:employee,complaints:complaints,complaint:false});
         // console.log(employee);
+    }catch(err){
+        console.log(err);
+    }
+});
+
+router.post('/employeeDashboard/:complaintsID',checkAuthenticated,async(req,res)=>{
+    try{
+        const id = req.user.id;
+        const employee = await Employee.findById(id);
+        const complaints = await Complaint.find({employeeId:employee.username});
+        const complaint = await Complaint.findById(req.params.complaintsID);
+        res.status(200).render('employee_dashboard',{employee:employee,complaints:complaints,complaint:complaint});
+        // console.log(complaint);
+    }catch(err){
+        console.log(err);
+    }
+});
+
+router.post('/employeeDashboard/:complaintsID/updateStatus',checkAuthenticated,async(req,res)=>{
+    try{
+        const updateComplaint = await Complaint.findByIdAndUpdate(req.params.complaintsID,{status:"completed"});
+        res.redirect('/employeeDashboard/');
+        // console.log(complaint);
     }catch(err){
         console.log(err);
     }

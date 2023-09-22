@@ -9,9 +9,9 @@
 }
 :root {
   --aclonica: "Aclonica", sans-serif;
-  --color: #23779b;
+  --color: rgb(0, 104, 74);
   --gravience_div: aliceblue;
-  --graviences_div_active: #22253dc7;
+  --graviences_div_active: rgb(2, 52, 48);
 }
 body {
   background-color: rgb(255, 255, 255);
@@ -29,6 +29,9 @@ nav {
 a{
   text-decoration: none;
   color: black;
+}
+.active a,.nav_list div:hover a{
+  color: white;
 }
 .nav_logo {
   width: 50%;
