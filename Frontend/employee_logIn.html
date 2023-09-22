@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Register</title>
+    <link rel="stylesheet" href="employee_logIn.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <img src="assets/logo.png" alt="logo">
+            <p>Codyaan</p>
+        </div>
+    </header>
+    <section class="main">
+        <container class="log-in disabled">
+            <div class="card-img">
+                <div class="log-in-text">
+                    <h1 style="font-size: 2em;line-height: 1.4;">Welcome to Our Site</h1>
+                    <p style="font-size: 1em;">Please fill the log-in form</p>
+                </div>
+                <!-- <img src="assets/log-in.png" alt=""> -->
+            </div>
+            <div class="form">
+                <h1>Log-in : </h1>
+                <form class="form-text">
+                    <p>User-id / Mobile Number</p>
+                    <input type="text" name="User-id" placeholder="Enter your user-id / mobile number"
+                        class="input">
+                    <p>Password</p>
+                    <input type="password" name="Password" placeholder="Enter your password" class="input">
+                    <button type="submit">Log-in</button>
+                    <div>
+                        <p>
+                            Don't have an account ?
+                        </p>
+                        <p>
+                            <span class="sign_up_link" id="signup_show" onclick="signup_show()"><i>Sign up here</i></span>
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </container>
+        <container class="sign-up ">
+            <div class="card-img ">
+                <div class="sign-up-text">
+                    <h1 style="font-size: 2em;line-height: 1.4;">Welcome to Our Site</h1>
+                    <p style="font-size: 1em;">Please fill the sign-up form</p>
+                </div>
+                <!-- <img src="assets/sign-up.png" alt=""> -->
+            </div>
+            <div class="form">
+                <h1>Sign-up : </h1>
+                <form class="form-text" autocomplete="off">
+                    <p>Full Name</p>
+                    <input type="text" name="User-id" placeholder="Enter your full name"
+                        class="input">
+                    <p>Employee ID</p>
+                    <input type="text" name="Password" placeholder="Enter Employee ID" class="input">
+                    <p>Mobile Number</p>
+                    <input type="tel" maxlength="10" name="Password" placeholder="Enter Mobile Number without country code " class="input" autocomplete="none">
+                    <p>Email-id</p>
+                    <input type="email" name="Password" placeholder="Enter your Email-id" class="input" autocomplete="none">
+                    <p>Password</p>
+                    <input type="password" minlength="8" name="Password" placeholder="Enter Your Password " class="input">
+                    <p>Confirm Password</p>
+                    <input type="password" name="Password"  placeholder="Re-Enter Your Password " class="input">
+                    <p>Workfield</p>
+                    <select id="zoneselect" onclick="updateInfo()" >
+                        <option value="">Enter your Workfield</option>
+                        <option value="Banking sector" >Banking sector</option>
+                        <option value="" onclick="openmuni()">Municipality</option>
+                        <!-- <option value=""></option>
+                        <option value=""></option> -->
+                    </select>
+                    <p class="bank_name">Bank Name</p>
+                    <select class="bank_name">
+                        <option value="">Enter your bank name</option>
+                        <option value="">SBI</option>
+                        <option value="">HDFC</option>
+                        <!-- <option value=""></option>
+                        <option value=""></option> -->
+                    </select>
+                    <p>Workplace</p>
+                    <input type="text" name="Password" placeholder="Enter Your Workplace " class="input">
+                    <p>Designation</p>
+                    <input type="text"  name="Password" placeholder="Enter Your Designation " class="input">
+                    <p>Language</p>
+                    <input type="text" name="Password" placeholder="Enter Your Language " class="input">
+                    <p>Complaint Specialisation</p>
+                    <input type="text" name="Password" placeholder="Enter Your Complaint Specialisation" class="input">
+                    <button type="submit">Sign-up</button>
+                </form>
+            </div>
+            <div class="login-link">
+                <p>
+                    Already have an account ? <span class="sign_up_link" id="signin_show" onclick="signin_show()"><i>Log-in here</i></span>
+                </p>
+            </div>
+        </container>
+    </section>
+    <script src="employee_logIn.js"></script>
+</body>
+</html>
