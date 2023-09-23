@@ -322,7 +322,8 @@ ul li {
   {% block content %}
     <nav>
         <div class="nav_logo">
-            <img src="assets/logo.png" alt="logo">
+            {% load static %}
+            <img src="{% static 'logo.png' %}" />
             <p>Codyaan</p>
         </div>
         <div class="nav_list" id="nav_list_link" >
@@ -340,7 +341,9 @@ ul li {
             <div class="graviences">
                 <form>
                     <p class="complaint_name">Lorem ipsum dolor sit amet consectetur </p>
-                    <status><img src="assets/peding.png" alt=""></status>
+                    <status>            {% load static %}
+                      <img src="{% static 'peding.png' %}" alt=""></status>
+
                 </form>
             </div>
         </div>

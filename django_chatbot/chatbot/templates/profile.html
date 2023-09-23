@@ -201,7 +201,8 @@ form{
 <body>
     <nav>
         <div class="nav_logo">
-            <img src="assets/logo.png" alt="logo">
+          {% load static %}
+          <img src="{% static 'logo.png' %}" alt="logo">
             <p>Codyaan</p>
         </div>
         <div class="nav_list">
@@ -214,7 +215,8 @@ form{
     <section>
         <div class="profile">
             <div class="image">
-                <img src="assets/profile.png" alt="" id="profile_pic">
+              {% load static %}
+              <img src="{% static 'profile.png' %}" alt="" id="profile_pic">
                 <input type="file" accept="image/*" id="profile_pic_add"><label for="profile_pic_add">
                     <div class="input_image"></div>
                 </label>

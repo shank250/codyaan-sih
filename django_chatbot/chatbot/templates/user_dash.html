@@ -294,7 +294,8 @@ section {
 <body>
     <nav>
         <div class="nav_logo">
-            <img src="assets/logo.png" alt="logo">
+          {% load static %}
+          <img src="{% static 'logo.png' %}" />
             <p>Codyaan</p>
         </div>
         <div class="nav_list">
@@ -308,26 +309,33 @@ section {
         <div class="sidebar">
             <h2>Graviences</h2>
             <div class="graviences">
-                <form>
-                    <p class="complaint_name">Lorem ipsum dolor sit amet consectetur </p>
-                    <status><img src="assets/pending.png" alt=""></status>
-                </form>
-                <form>
-                    <p class="complaint_name">Lorem fiejfe iejfeifjei f </p>
-                    <status><img src="assets/completed.png" alt=""></status>
-                </form>
-                <form class="active">
-                    <p class="complaint_name">Lorem frojrit rigjrigjri gr </p>
-                    <status><img src="assets/pending.png" alt=""></status>
-                </form>
-                <form>
-                    <p class="complaint_name">Lorem ifeoire eo ie vheu </p>
-                    <status><img src="assets/completed.png" alt=""></status>
-                </form>
-                <form>
-                    <p class="complaint_name">Lorem ipsvrfhrf feiur eire</p>
-                    <status><img src="assets/completed.png" alt=""></status>
-                </form>
+              <form>
+                <p class="complaint_name">Lorem ipsum dolor sit amet consectetur </p>
+                <status>
+                  {% load static %}
+                  <img src="{% static 'pending.png' %}" alt=""></status>
+            </form>
+            <form>
+                <p class="complaint_name">Lorem fiejfe iejfeifjei f </p>
+                <status>{% load static %}
+                  <img src="{% static 'completed.png' %}" alt=""></status>
+            </form>
+            <form class="active">
+                <p class="complaint_name">Lorem frojrit rigjrigjri gr </p>
+                <status>{% load static %}
+                  <img src="{% static 'pending.png' %}" alt=""></status>
+            </form>
+            <form>
+                <p class="complaint_name">Lorem ifeoire eo ie vheu </p>
+                <status>{% load static %}
+                  <img src="{% static 'completed.png' %}" alt=""></status>
+            </form>
+            <form>
+                <p class="complaint_name">Lorem ipsvrfhrf feiur eire</p>
+                <status>{% load static %}
+                  <img src="{% static 'completed.png' %}" alt=""></status>
+            </form>
+            
             </div>
         </div>
         <div class="gravience">
@@ -345,19 +353,23 @@ section {
                 <h4>Documents :</h4>
                 <div>
                     <div class="document">
-                        <img src="assets/document.png">
+                      {% load static %}
+                      <img src="{% static 'document.png' %}" alt="Document">
                         <p>Aadhar</p>
                     </div>
                     <div class="document">
-                        <img src="assets/document.png">
+                      {% load static %}
+                      <img src="{% static 'document.png' %}" alt="Document">
                         <p>Passbook</p>
                     </div>
                     <div class="document">
-                        <img src="assets/document.png">
+                      {% load static %}
+                      <img src="{% static 'document.png' %}" alt="Document">
                         <p>Pan card</p>
                     </div>
                     <div class="document">
-                        <img src="assets/document.png">
+                      {% load static %}
+                      <img src="{% static 'document.png' %}" alt="Document">
                         <p>Aadhar</p>
                     </div>
                 </div>
