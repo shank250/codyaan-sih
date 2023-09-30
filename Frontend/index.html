@@ -4,176 +4,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> -->
-    <title>{% block title %}{% endblock %}</title>
-    <link rel="stylesheet" href="chatbot.css">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <!-- {% endblock %} -->
-    <!-- {% block content %} -->
-    <nav>
-        <div class="nav_logo">
-            <img src="assets/logo.png" alt="logo">
+    <header>
+        <div class="logo">
+            <img src="logo.png" alt="logo">
             <p>Codyaan</p>
         </div>
-        <div class="nav_list">
-            <div>Home</div>
-            <div class="active">Rasie a complaint</div>
-            <div>Dashboard</div>
-            <div>Profile</div>
-        </div>
-    </nav>
+    </header>
     <section>
-        <div class="sidebar">
-            <h2>History</h2>
-            <div class="graviences">
-                <form>
-                    <p class="complaint_name">Lorem ipsum dolor sit amet consectetur </p>
-                    <status><img src="assets/peding.png" alt=""></status>
-                </form>
+        <div class="carousel-inner">
+            <div class="carousel-item" data-set="active">
+                <img src="https://www.jpcbank.com/assets/grivience/grievance%20copy.jpg" class="d-block w-100"
+                    alt="...">
             </div>
-        </div>
-        <div class="chatbot chat-container">
-            <!-- {% if user.is_authenticated %} -->
-            <h3 class="card-header">Welcome, {{user.username}}</h3>
-            <!-- {% else %} -->
-
-            <!-- {% endif %} -->
-            <div class="card-body messages-box" id="message_box">
-                <ul class="list-unstyled messages-list" messages-list>
-                    <li class="message received">
-                        <div class="message-text">
-                            <div class="message-sender">
-                                <b>Hello</b>
-                            </div>
-                            <div class="message-content">
-                                Hi {{user.username}}, I am your AI Chatbot, you can ask me anything.
-                            </div>
-                        </div>
-                    </li>
-
-                    <!-- {% for chat in chats %} -->
-                    <!-- {% if chat.user == request.user %} -->
-
-                    <li class="message sent">
-                        <div class="message-text">
-                            <div class="message-sender">
-                                <b>You</b>
-                            </div>
-                            <div class="message-content">
-                                <!-- {{chat.message}} -->
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="message received">
-                        <div class="message-text">
-                            <div class="message-sender">
-                                <b>AI Chatbot</b>
-                            </div>
-                            <div class="message-content">
-                                <!-- {{chat.response}} -->
-                            </div>
-                        </div>
-                    </li>
-                    <!-- {% endif %} -->
-                    <!-- {% endfor %} -->
-                </ul>
-                <input type="text" id="show" style="visibility: hidden;">
+            <div class="carousel-item" data-set="afteractive">
+                <img src="https://www.federalbank.co.in/documents/10180/85638912/GrievanceRedressal.jpg/ebf825ae-f382-3ac9-bde8-caca4c692350?t=1647335487752"
+                    class="d-block w-100" alt="...">
             </div>
-            <div class="documents">
-                <div class="document">
-                    <input type="file" style="display: none;" id="img" alt=""><label for="img" class="img"></label>
-                    <p>Aadhar</p>
-                </div>
+            <div class="carousel-item" data-set="beforeactive">
+                <img src="https://www.svc.ac.in/SVC_MAIN/Complaint/d1.jpg" class="d-block w-100" alt="...">
             </div>
-            <form class="message-form">
-                <!-- {%csrf_token%} -->
-                <div class="input-group">
-                    <div class="input">
-                        <input type="text" class="form-control message-input" placeholder="Type your message">
-                        <div>
-                            <p><button id="record" class=""></button></p>
-                        </div>
-                    </div>
-                    <div class="input-group-append">
-                        <button type="submit" class="btn btn-primary btn-send">Send</button>
-                    </div>
-                </div>
-            </form>
         </div>
     </section>
-    <!-- {% block content %}{% endblock %} -->
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-    <!-- {% block scripts %}{% endblock %} -->
-    <script>
-        const messagesList = document.querySelector('.messages-list');
-        const messageForm = document.querySelector('.message-form');
-        const messageInput = document.querySelector('.message-input');
-        // document.addEventListener("keydown", () => {
-        //     messageInput.focus();
-        // })
-
-        messageForm.addEventListener('submit', (event) => {
-            event.preventDefault();
-            const message = messageInput.value.trim();
-            if (message.length === 0) {
-                return;
-            }
-            const messageItem = document.createElement('li');
-            messageItem.classList.add('message', 'sent');
-            messageItem.innerHTML = `
-              <div class="message-text">
-                  <div class="message-sender">
-                      <b>You</b>
-                  </div>
-                  <div class="message-content">
-                      ${message}
-                  </div>
-              </div>`;
-            messagesList.appendChild(messageItem);
-            messageInput.value = '';
-            fetch('', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: new URLSearchParams({
-                    // 'csrfmiddlewaretoken': document.querySelector('[name=csrfmiddlewaretoken]').value,
-                    'message': message
-                })
-            })
-                .then(response => response.json())
-                .then(data => {
-                    const response = data.response;
-                    const messageItem = document.createElement('li');
-                    messageItem.classList.add('message', 'received');
-                    messageItem.innerHTML = `
-              <div class="message-text">
-                  <div class="message-sender">
-                    <b>AI Chatbot</b>
-                  </div>
-                  <div class="message-content">
-                      ${response}
-                  </div>
-              </div>
-                `;
-                    messagesList.appendChild(messageItem);
-                });
-            var child = document.getElementById("show").getBoundingClientRect().top;
-            document.getElementById("message_box").scrollTop = child;
-        });
-        document.getElementById("record").onclick = ()=>{
-            document.getElementById("src").setAttribute("src","voice.js");
-        }
-    </script>
-    <script id="src"></script>
-    <script
-        src="https://code.jquery.com/jquery-3.3.1.min.js"
-        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-        crossorigin="anonymous"></script>
-    <!-- {% endblock %} -->
+    <h1>National Grievance Redressal system</h1>
+    <div class="container">
+        <h2>Welcome to National Grievance Redressal system</h2>
+        <p>Welcome to the National Grievance Redressal System (NGRS), an innovative platform powered by an AI chatbot
+            designed to transform the way grievances are addressed in our nation. Our mission is to provide a seamless
+            and efficient grievance redressal experience for all citizens.</p>
+    </div>
+    <div class="container">
+        <h2>ABOUT NGRS</h2>
+        <p>
+            The National Grievance Redressal System (NGRS) represents a
+            pioneering approach to addressing citizen grievances by leveraging the power
+            of artificial intelligence (AI). In an increasingly digital world, governments
+            worldwide are recognizing the potential of AI-driven systems to
+            enhance administrative efficiency, transparency, and public satisfaction. <br>
+            NGRS is a significant step forward in this direction, providing an
+            intelligent platform to manage and resolve grievances at the national level.
+        </p>
+    </div>
+    <div class="container">
+        <h2>What We Offer</h2>
+        <p>Our platform offers a comprehensive suite of features tailored to meet the unique needs of today's citizens.
+            From
+            lodging grievances and tracking their status to receiving updates and solutions, NGRS provides all the tools
+            you
+            need to ensure your voice is heard.</p>
+    </div>
+    <div class="container">
+        <h2>Advantages of NGRS</h2>
+        <p><ul>
+            <li><b>Efficiency </b>: Our AI chatbot streamlines the grievance redressal process, saving you time and resources.</li>
+            <li><b>Accessibility </b>: With our platform, you can lodge your grievances anytime, anywhere.</li>
+            <li><b>Transparency </b>: Track the status of your grievances in real-time and receive updates directly.</li>
+            </ul></p>
+    </div>
+    <div class="container">
+        <h2>Considerations</h2>
+        <p>While NGRS strives to provide an all-encompassing solution, there are a few considerations to keep in mind:</p>
+        <p><ul>
+            <li><b>Learning Curve </b>: As with any new system, there may be a learning curve involved in understanding and utilizing all the features of NGRS.</li>
+            <li><b>Internet Access </b>: Our platform is online-based. Therefore, users will need internet access to use our services.</li>
+            </ul></p>
+    </div>
+    <div class="card_container">
+        <div class="card login">
+            FOR EMPLOYEE REGISTER AND LOGIN <br>
+            <button>Click Here</button>
+        </div>
+        <div class="card sign_up">
+            FOR USER REGISTER AND LOGIN <br>
+            <button>Click Here</button>
+        </div>
+    </div>
+    <div class="container">
+        <p>We invite you to explore our website and discover how NGRS can ensure your grievances are addressed effectively. If you have any questions or need assistance, please don't hesitate to contact us.</p>
+    </div>
+    <footer>
+        <p>&copy Copyright Team Codyaan</p>
+    </footer>
+    <script src="script.js"></script>
 </body>
 
 </html>
