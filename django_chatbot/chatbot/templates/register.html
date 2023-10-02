@@ -236,6 +236,7 @@ form div {
 }
     </style>
 </head>
+
 <body>
     <header>
         <div class="logo">
@@ -245,24 +246,77 @@ form div {
         </div>
     </header>
     <section class="main">
-        <container class="log-in ">
-            <div class="card-img">
-                <div class="log-in-text">
+        <container class="sign-up ">
+            <div class="card-img ">
+                <div class="sign-up-text">
                     <h1 style="font-size: 2em;line-height: 1.4;">Welcome to NGRS</h1>
-                    <p style="font-size: 1em;">Login to your Account</p>
+                    <p style="font-size: 1em;">Please fill the sign-up form</p>
                 </div>
             </div>
+
+            <!-- registration page -->
+
             <div class="form">
-                <h1>Log-in : </h1>
-                <form class="form-text" method="POST" id="login-form">
+                <h1>Sign-up : </h1>
+                <form class="form-text" method="POST" autocomplete="off">
                     {% csrf_token %}
-                    <p>Email</p>
-                    <input type="text" name="email" placeholder="Enter your username" class="input">
+                    <p>Full Name</p>
+                    <input type="text" name="username" placeholder="Enter your full name" class="input">
+                    <p>User-id</p>
+                    <input type="text" name="userID" placeholder="Enter Employee ID" class="input">
+                    <p>Mobile Number</p>
+                    <input type="tel" maxlength="10" name="number" placeholder="Enter Mobile Number without country code " class="input" autocomplete="none">
+                    <p>Email-id</p>
+                    <input type="email" name="email" placeholder="Enter your Email-id" class="input"
+                        autocomplete="none">
                     <p>Password</p>
-                    <input type="password" name="password1" placeholder="Enter your password" class="input">
-                    <button type="submit">Log-in</button>
+                    <input type="password" minlength="8" name="password1" placeholder="Enter Your Password "
+                        class="input">
+                    <p>Confirm Password</p>
+                    <input type="password" name="password2" placeholder="Re-Enter Your Password " class="input">
+                    <p>Aadhaar Number</p>
+                    <input type="number" id="phone" class="input" name="aadharNo" placeholder="Enter Your Aadhaar Number" oninput="validateAdhaarNumber(this)" autocomplete="none" >
+                    <p>Language</p>
+                    <select class="select-input" name="language">
+                        <option value_1="">Select your Language</option>
+                        <option value="">हिन्दी</option>
+                        <option value="">English</option>
+                        <option value="">বাংলা</option>
+                        <option value="">मराठी</option>
+                    </select>
+                    <button type="submit">Register</button>
                 </form>
             </div>
+            <div class="login-link">
+                <p>
+                     Already have an account?<a href="{% url 'login' %}" >Login </a>
+                </p>
+            </div>
+        </container>
     </section>
+    <script>
+    function validatePhone(input) {
+    const maxLength = 10;
+    const inputValue = input.value.toString();
+
+    if (inputValue.length > maxLength) {
+        // document.getElementById('phoneError').textContent = 'Phone number should be up to 10 digits.';
+        input.value = inputValue.slice(0, maxLength); // Truncate input
+    } else {
+        document.getElementById('phoneError').textContent = '';
+    }
+}
+function validateAdhaarNumber(input) {
+    const maxLength = 12;
+    const inputValue = input.value.toString();
+
+    if (inputValue.length > maxLength) {
+        // document.getElementById('phoneError').textContent = 'Phone number should be up to 10 digits.';
+        input.value = inputValue.slice(0, maxLength); // Truncate input
+    } else {
+        document.getElementById('phoneError').textContent = '';
+    }
+}
+    </script>
 </body>
 </html>

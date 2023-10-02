@@ -200,17 +200,21 @@ form{
 
 <body>
     <nav>
-        <div class="nav_logo">
-          {% load static %}
-          <img src="{% static 'logo.png' %}" alt="logo">
-            <p>Codyaan</p>
+      <div class="nav_logo">
+        {% load static %}
+        <img src="{% static 'logo.png' %}" />
+        <p>Codyaan</p>
+    </div>
+    <div class="nav_list" id="nav_list_link" >
+        <div>
+          <a href="{% url 'home' %}" >Home</a>
+          </div>
+        <div><a href="{% url 'chatbot' %}" >Raise a complaint</a></div>
+        <div> 
+        <a href="{% url 'dashboard' %}" >Dashboard</a>
         </div>
-        <div class="nav_list">
-            <div>Home</div>
-            <div>Raise a Complaint</div>
-            <div>Dashboard</div>
-            <div class="active">Profile</div>
-        </div>
+        <div class="active"><a href="{% url 'profile' %}" >Profile</a></div>
+    </div>
     </nav>
     <section>
         <div class="profile">

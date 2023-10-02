@@ -1,3 +1,5 @@
+from django.http import HttpResponse
+from django.template import loader
 from django.shortcuts import render, redirect
 from django.http import JsonResponse
 import openai
@@ -301,43 +303,91 @@ def chatbot(request):
 
 
 
+# def login(request):
+#     if request.method == 'POST':
+#         userID = request.POST['userID']
+#         password1 = request.POST['password1']
+#         user = auth.authenticate(request, userID=userID, password1=password1)
+#         if user is not None:
+#             auth.login(request, user)
+#             return redirect('chatbot')
+#         else:
+#             error_message = 'Invalid userID or password'
+#             return render(request, 'login.html', {'error_message': error_message})
+#     else:
+#         return render(request, 'chatbot.html')
+
+
+
+
+from pymongo import MongoClient
+
 def login(request):
     if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
-        user = auth.authenticate(request, username=username, password=password)
-        if user is not None:
-            auth.login(request, user)
-            return redirect('chatbot')
+        print("Request ok")
+        email = request.POST['email']
+        password = request.POST['password1']
+
+        client = MongoClient('mongodb://localhost:27017/')
+        db = client['User_database']  
+        users_collection = db['auth_user']
+
+        print('mongdb connected')
+        user_document = users_collection.find_one({'email': email})
+        if user_document:
+            user_data_str=user_document['username']
+            user_data_dict=user_data_str.replace('\'','\"')
+            username_json = json.loads(user_data_dict)
+            password2 = username_json['password2']
+            print(password2) 
+            if password==password2:
+                print('Password matched')
+                return redirect('chatbot')
         else:
-            error_message = 'Invalid username or password'
-            return render(request, 'login.html', {'error_message': error_message})
-    else:
-        return render(request, 'chatbot.html')
+            error="Register"
+            return render(request, 'register.html')
+    return render(request, 'login.html')    
+
 
 def register(request):
     if request.method == 'POST':
-        username = request.POST['username']
-        email = request.POST['email']
-        password1 = request.POST['password1']
-        password2 = request.POST['password2']
+        email= request.POST['email']
+        password1= request.POST['password1']
+        user_data = {
+            'username': request.POST['username'],
+            'userID': request.POST['userID'],
+            'password2': request.POST['password2'],
+            'aadharNo': request.POST['aadharNo'],
+            'language': request.POST['language'],  
+            }
+        if password1 == user_data['password2']:
+            user = User.objects.create_user(user_data, email, password1)
+            user.save()
+            auth.login(request, user)
+            return redirect('chatbot')
+    return render(request, 'register.html')
 
-        if password1 == password2:
-            try:
-                user = User.objects.create_user(username, email, password1)
-                user.save()
-                auth.login(request, user)
-                return redirect('chatbot')
-            except:
-                error_message = 'Error creating account'
-                return render(request, 'register.html', {'error_message': error_message})
-        else:
-            error_message = 'Password dont match'
-            return render(request, 'register.html', {'error_message': error_message})
-    return render(request, 'login.html')
+def home(request):
+    return render(request,'home.html')
 
-from django.http import HttpResponse
-from django.template import loader
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 def user_dash(request):
     template = loader.get_template('user_dash.html')

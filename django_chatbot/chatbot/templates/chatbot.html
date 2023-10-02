@@ -1,13 +1,12 @@
-<!-- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}{% endblock %}</title>
-    <link rel="stylesheet" href="chatbot.css">
     {% block style %}{% endblock %}
-</head> -->
+</head>
 
 {% block styles %}
 <style>
@@ -327,7 +326,9 @@ ul li {
             <p>Codyaan</p>
         </div>
         <div class="nav_list" id="nav_list_link" >
-            <div>Home</div>
+            <div>
+              <a href="{% url 'home' %}" >Home</a>
+              </div>
             <div class="active"> Raise a complaint</div>
             <div> 
             <a href="{% url 'dashboard' %}" >Dashboard</a>
@@ -341,7 +342,8 @@ ul li {
             <div class="graviences">
                 <form>
                     <p class="complaint_name">Lorem ipsum dolor sit amet consectetur </p>
-                    <status>            {% load static %}
+                    <status>            
+                      {% load static %}
                       <img src="{% static 'peding.png' %}" alt=""></status>
 
                 </form>
@@ -349,7 +351,9 @@ ul li {
         </div>
         <div class="chatbot chat-container">
             {% if user.is_authenticated %}
-            <h3 class="card-header">Welcome, {{user.username}}</h3>
+            {% with user_data=user.username|json_script:"user_data" %}
+            <h3 class="card-header">Welcome, {{ user_data.user_data.username }}</h3>
+            {% endwith %}
             {% else %}
 
             {% endif %}
@@ -486,4 +490,4 @@ ul li {
         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
         {% endblock %}
-      
+</html>
