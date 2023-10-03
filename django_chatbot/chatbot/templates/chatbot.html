@@ -341,7 +341,7 @@ ul li {
             <h2>History</h2>
             <div class="graviences">
                 <form>
-                    <p class="complaint_name">Lorem ipsum dolor sit amet consectetur </p>
+                    <p class="complaint_name">Query 1 </p>
                     <status>            
                       {% load static %}
                       <img src="{% static 'peding.png' %}" alt=""></status>
@@ -350,13 +350,9 @@ ul li {
             </div>
         </div>
         <div class="chatbot chat-container">
-            {% if user.is_authenticated %}
-            {% with user_data=user.username|json_script:"user_data" %}
-            <h3 class="card-header">Welcome, {{ user_data.user_data.username }}</h3>
-            {% endwith %}
-            {% else %}
-
-            {% endif %}
+              <h3 class="card-header">Welcome {{ user_profile}}</h3>
+              <!-- Access other UserProfile attributes as needed -->
+          <!-- <h3 class="card-header">Welcome to NGRS Sir</h3> -->
             <div class="card-body messages-box" id="message_box">
                 <ul class="list-unstyled messages-list" messages-list>
                     <li class="message received">

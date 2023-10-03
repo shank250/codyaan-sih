@@ -233,20 +233,20 @@ form{
                     <div class="input_image"></div>
                 </label>
             </div>
-            <div class="name">User Name</div>
+            <div class="name">{{ full_name }}</div>
             <div class="mini_details">
-                <div>
+                <!-- <div>
                     <h5>Name</h5>
-                    <p>Your Full Name</p>
+                    <p>{{ full_name }}</p>
                 </div>
                 <div>
                     <h5>User id</h5>
-                    <p>Your User id</p>
-                </div>
+                    <p>{{user_id}}</p>
+                </div>  
                 <div>
-                    <h5>Address</h5>
-                    <p>Your Address</p>
-                </div>
+                    <h5>Email</h5>
+                    <p>{{email}}</p>
+                </div> -->
             </div>
             <!-- <div class="complaint_track">
                 <div class="completed">
@@ -267,19 +267,19 @@ form{
                         <button type="button" class="edit" id="edit">Edit</button>
                         <div class="content">
                             <p>Name</p>
-                            <input type="text" name="" value="Aryan Srivastava" autocomplete="no"  class="editable" disabled>
+                            <input type="text" name="full_name" value="{{ full_name }}" autocomplete="no" class="editable" disabled>
                             <p>User-id</p>
-                            <input type="text" name="" value="Aryan Srivloremfgrgfrg34vfgdfgdg t trg trgtrastava" autocomplete="no"  class="editable" disabled>
+                            <input type="text" name="" value="{{user_id}}" autocomplete="no"  class="editable" disabled>
                             <p>Mobile Number</p>
-                            <input type="number" id="phone" class="editable" name="phone" placeholder="Enter Your Mobile Number" oninput="validatePhone(this)" autocomplete="none" disabled >
+                            <input type="number" id="phone" class="editable" name="phone" value="{{mobile_number}}"" placeholder="Enter Your Mobile Number" oninput="validatePhone(this)" autocomplete="none" disabled >
                             <p>Email-id</p>
-                            <input type="email" name="" value="Aryan Srivloremfgrgfrg34vfgdfgdg t trg trgtrastava" autocomplete="no"  class="editable" disabled>
+                            <input type="email" name="" value="{{email}}" autocomplete="no"  class="editable" disabled>
                             <p>Password</p>
-                            <input type="password" name="" value="Aryan Srivastava" autocomplete="no"  class="editable" disabled>
+                            <input type="password" name="" value="{{password}}" autocomplete="no"  class="editable" disabled>
                             <p>Adhaar Number</p>
-                            <input type="number" id="phone" class="editable" name="phone" placeholder="Enter Your Adhaar Number" oninput="validateAdhaarNumber(this)" autocomplete="none" disabled>
+                            <input type="number" id="phone" name="aadhar" value ="{{aadhar_number}}" placeholder="Enter Your Adhaar Number" oninput="validateAdhaarNumber(this)" autocomplete="none" disabled>
                             <p>Language</p>
-                            <input type="text" name="" value="Aryan Srivastava" autocomplete="no"  class="editable" disabled>
+                            <input type="text" name="" value="{{language}}" autocomplete="no"  class="editable" disabled>
                             <!-- <p>Name</p>
                             <input type="text" name="" value="Aryan Srivloremfgrgfrg34vfgdfgdg t trg trgtrastava" autocomplete="no"  class="editable" disabled> -->
                             <!-- <p>Name</p>

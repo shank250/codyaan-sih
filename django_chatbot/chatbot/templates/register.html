@@ -265,7 +265,7 @@ form div {
 
             <div class="form">
                 <h1>Sign-up : </h1>
-                <form class="form-text" method="POST" autocomplete="off">
+                <form class="form-text" method="POST" action="{% url 'register' %}"autocomplete="off">
                     {% csrf_token %}
                     <p>Full Name</p>
                     <input type="text" name="username" placeholder="Enter your full name" class="input">

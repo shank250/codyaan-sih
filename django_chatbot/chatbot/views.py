@@ -1,3 +1,5 @@
+
+from django.contrib.auth import get_user_model
 from django.http import HttpResponse
 from django.template import loader
 from django.shortcuts import render, redirect
@@ -25,6 +27,7 @@ os.environ['OPENAI_API_KEY'] = 'sk-RQa5bPtox5Le4rzMpCtWT3BlbkFJYzJKY1AKQfRBTH3R7
 history = ChatMessageHistory()
 user_chat = []
 ai_chat = []
+email = None
 
 # Create your views here.
 
@@ -191,11 +194,99 @@ def ask_openai(message):
     return answer
 
 
-def chatbot(request):
+from pymongo import MongoClient
 
+def login(request):
+    if request.method == 'POST':
+        print("Request okay")
+        global emailID
+        email= request.POST['email']
+        print(email)
+        emailID=email
+        password = request.POST['password1']
+        context={
+            'email': email,
+        }
+
+        client = MongoClient('mongodb://localhost:27017/')
+        db = client['User_database']  
+        users_collection = db['chatbot_userprofile']
+
+        print('mongdb connected okay')
+        user_document = users_collection.find_one({'email': email})
+        if user_document:
+            # user_data_str=user_document['username']
+            # user_data_dict=user_data_str.replace('\'','\"')
+            # username_json = json.loads(user_data_dict)
+            # password2 = username_json['password2']
+            # print(password2) 
+            password2=user_document['password']
+            if password==password2:
+                print('Password matched')
+                request.session['emailID'] = email
+                return redirect('chatbot')
+                # return render(request,'chatbot.html',context)
+        else:
+            error="Register"
+            return render(request, 'register.html')
+    return render(request, 'login.html') 
+
+
+from django.contrib.auth.decorators import login_required
+from .models import UserProfile
+import json
+
+def profile(request):
+    emailID = request.session.get('emailID', None)
+    client = MongoClient('mongodb://localhost:27017/')
+    db = client['User_database']  
+    users_collection = db['chatbot_userprofile']
+    user_document = users_collection.find_one({'email': emailID})
+    print(user_document['full_name'])
+    context = {
+        'full_name': user_document['full_name'],
+        'user_id': user_document['public_id'],
+        'mobile_number': user_document['mobile_number'],
+        'email': user_document['email'],
+        'password': '********',
+        'aadhar_number': user_document['aadhar_number'], 
+        'language': user_document['language'],
+    }
+    return render(request,'profile.html',context)
+
+
+def chatbot(request):
+    # redirect('chatbot')
+    print("entering chatbot")
     # return render(request, 'chatbot.html')
     # chats = Chat.objects.filter(user=request.user)
     # complaint_mongodb()
+    # global emailID
+    # file_path = 'email.txt'
+    emailID = request.session.get('emailID', None)
+    # if emailID:
+    #     with open(file_path, 'w') as txt:
+    #         txt.write(emailID)
+    # with open(file_path, 'r') as txt:
+    #     emailID = txt.read().strip() 
+    # email= request.GET.get('email', 'No email provided') 
+    client = MongoClient('mongodb://localhost:27017/')
+    db = client['User_database']  
+    users_collection = db['chatbot_userprofile']
+    print('mongdb connected')
+    print(emailID)
+    user_document = users_collection.find_one({'email': emailID})
+    print(type(user_document))
+    print(user_document)
+    print( user_document['full_name'])
+    # user_data_str=user_document['username']
+    # user_data_dict=user_data_str.replace('\'','\"')
+    # username_json = json.loads(user_data_dict)
+    # print(username_json)
+    context = {
+        'user_profile': user_document['full_name'],
+    }
+    
 
     if request.method == 'POST':
         user_query = request.POST.get('message')
@@ -297,8 +388,7 @@ def chatbot(request):
     #     print("CHAT SUMmARY : " + chat_summary)
     #     complaint_completion(str(history.messages) + user_query)
 
-    return render(request, 'chatbot.html')
-
+    return render(request, 'chatbot.html', context)
 
 
 
@@ -320,72 +410,76 @@ def chatbot(request):
 
 
 
-from pymongo import MongoClient
 
-def login(request):
-    if request.method == 'POST':
-        print("Request ok")
-        email = request.POST['email']
-        password = request.POST['password1']
+# def register(request):
+#     if request.method == 'POST':
+#         email= request.POST['email']
+#         password1= request.POST['password1']
+#         user_data = {
+#             'username': request.POST['username'],
+#             'userID': request.POST['userID'],
+#             'password2': request.POST['password2'],
+#             'aadharNo': request.POST['aadharNo'],
+#             'mobileNo': request.POST['number'],
+#             'language': request.POST['language'], 
+#             }
+#         if password1 == user_data['password2']:
+#             # obj=User(
+#             #     username = user_data['username'],
+#             #     email = email,
+#             #     password1 = password1,
+#             #     password2 = password1,
+#             #     userID = user_data['userID'],
+#             #     aadharNo = user_data['aadharNo'],
+#             #     phoneNo =user_data['mobileNo'],
+#             #     language = user_data['language'],
+#             # )
+#             # obj.save()
+#             user = User.objects.create_user(user_data, email, password1)
+#             user.save()
+#             auth.login(request, user)
+#             return redirect('chatbot')
+#     return render(request, 'register.html')
 
-        client = MongoClient('mongodb://localhost:27017/')
-        db = client['User_database']  
-        users_collection = db['auth_user']
-
-        print('mongdb connected')
-        user_document = users_collection.find_one({'email': email})
-        if user_document:
-            user_data_str=user_document['username']
-            user_data_dict=user_data_str.replace('\'','\"')
-            username_json = json.loads(user_data_dict)
-            password2 = username_json['password2']
-            print(password2) 
-            if password==password2:
-                print('Password matched')
-                return redirect('chatbot')
-        else:
-            error="Register"
-            return render(request, 'register.html')
-    return render(request, 'login.html')    
-
+from django.shortcuts import render, redirect
+from .models import UserProfile
 
 def register(request):
     if request.method == 'POST':
-        email= request.POST['email']
-        password1= request.POST['password1']
-        user_data = {
-            'username': request.POST['username'],
-            'userID': request.POST['userID'],
-            'password2': request.POST['password2'],
-            'aadharNo': request.POST['aadharNo'],
-            'language': request.POST['language'],  
-            }
-        if password1 == user_data['password2']:
-            user = User.objects.create_user(user_data, email, password1)
-            user.save()
-            auth.login(request, user)
-            return redirect('chatbot')
+        full_name = request.POST['username']
+        public_id = request.POST['userID']
+        mobile_number = request.POST['number']
+        email = request.POST['email']
+        password1 = request.POST['password1']
+        password2 = request.POST['password2']        
+        aadhar_number = request.POST['aadharNo']
+        language = request.POST['language']
+
+        # Create and save a new UserProfile object
+        user = get_user_model().objects.create(username=full_name, password=password1)
+
+        if password1 == password2:
+           
+            user_profile = UserProfile(
+                user=user,
+                full_name=full_name,
+                public_id=public_id,
+                mobile_number=mobile_number,
+                email=email,
+                password=password1,
+                aadhar_number=aadhar_number,
+                language=language
+            )
+            user_profile.save()
+            # auth.login(request, user)
+            request.session['emailID'] = email
+
+            return redirect('chatbot') 
     return render(request, 'register.html')
+
 
 def home(request):
     return render(request,'home.html')
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -393,9 +487,7 @@ def user_dash(request):
     template = loader.get_template('user_dash.html')
     return HttpResponse(template.render())
 
-def profile(request):
-    template = loader.get_template('profile.html')
-    return HttpResponse(template.render())
+
 
 def logout(request):
     auth.logout(request)
