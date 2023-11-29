@@ -5,20 +5,194 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap&family=Alkalami&family=Secular+One&display=swap&family=Lato:wght@900&display=swap&family=Titillium+Web:wght@900&display=swap&family=Aclonica:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap');
+
+:root {
+  --aclonica: 'Aclonica', sans-serif;
+  --bungee: 'Bungee Spice', Copperplate, Papyrus, fantasy, cursive;
+}
+
+body {
+  background-color: rgb(255, 255, 255);
+  margin: 0;
+}
+
+header {
+  height: 8vh;
+  height: 8svh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+  background-color: white;
+  padding-bottom: 1em;
+}
+
+.logo {
+  width: 100%;
+  margin-top: 2em;
+  padding: 0 5em;
+}
+
+.logo p {
+  position: absolute;
+  padding: 4em;
+  top: 50%;
+  transform: translateY(-50%);
+  color: rgb(37, 37, 37);
+  font-family: var(--aclonica);
+}
+
+.logo img {
+  height: 10vh;
+  object-fit: contain;
+  filter: invert(1);
+}
+
+h1 {
+  width: fit-content;
+  margin: auto;
+  text-align: center;
+  font-size: xx-large;
+  font-family: var(--bungee);
+  background-color: rgb(0, 0, 0);
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  position: relative;
+}
+h1::after{
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 5px;
+  background-color: rgb(0, 0, 0);
+  border-radius: 10px;
+}
+h1 p{
+  text-align: left;
+}
+section {
+  height: 30vh;
+  width: 90%;
+  margin: 5%;
+  overflow: hidden;
+}
+
+.carousel-inner {
+  height: 100%;
+  position: relative;
+}
+
+.carousel-item {
+  width: 100%;
+  position: absolute;
+  transform: translate(100%, 0);
+  transition: all .5s;
+  display: grid;
+  place-items: center;
+}
+
+.carousel-item img {
+  margin: auto;
+}
+
+.carousel-item[data-set="active"] {
+  transform: translate(0, 0);
+  z-index: 1;
+}
+
+.carousel-item[data-set="afteractive"] {
+  transform: translate(100%, 0);
+  opacity: 0;
+  scale: 0;
+  z-index: -1;
+}
+
+.carousel-item[data-set="beforeactive"] {
+  transform: translate(-100%, 0);
+  opacity: 0;
+  scale: 0;
+  z-index: -1;
+}
+
+.container {
+  width: 60%;
+  padding: 1em 2em;
+  border-radius: 10px;
+  margin:1em auto;
+}
+
+h2 {
+  margin-left: 50px;
+  font-family: var(--aclonica);
+}
+
+.container p,.container li{
+  font-size: x-large;
+}
+.card_container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 2em auto;
+  width: 80%;
+  height: 100%;
+  justify-content: space-evenly;
+  padding: 0 5em;
+}
+.card{
+  padding: 2em 2em;
+  border-radius: 10px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  width: 20vw;
+  text-align: center;
+}
+.card button{
+  margin: 2em 0 0 1em;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  font-family: var(--aclonica);
+  cursor: pointer;
+  padding: 1em 2em;
+  background-color: rgb(83, 86, 105);
+  color: white;
+  border-radius: 5px;
+}
+footer{
+  height: 10vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(0, 0, 0);
+  color: white;
+  position: relative;
+  margin: 0;
+}
+    </style>
 </head>
 
 <body>
     <header>
         <div class="logo">
-            <img src="logo.png" alt="logo">
+            <img src="assets/logo.png" alt="logo">
             <p>Codyaan</p>
         </div>
     </header>
     <section>
         <div class="carousel-inner">
             <div class="carousel-item" data-set="active">
-                <img src="https://www.jpcbank.com/assets/grivience/grievance%20copy.jpg" class="d-block w-100"
+                <img src="https://www.jpcbank.comassets/grivience/grievance%20copy.jpg" class="d-block w-100"
                     alt="...">
             </div>
             <div class="carousel-item" data-set="afteractive">
@@ -89,7 +263,14 @@
     <footer>
         <p>&copy Copyright Team Codyaan</p>
     </footer>
-    <script src="script.js"></script>
+    <script >var carousel = document.querySelector('.carousel-inner');
+        var carousel_items = carousel.children;
+        var i=1;
+        setInterval(() => {
+            carousel_items[i-1>=0?i-1:carousel_items.length-1].setAttribute('data-set', 'beforeactive');
+            carousel_items[i].setAttribute('data-set', 'active');
+            carousel_items[i<2?i+1:0].setAttribute('data-set', 'afteractive');
+            i+1>2?i=0:i++;
+        }, 2000);</script>
 </body>
-
 </html>
