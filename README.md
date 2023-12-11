@@ -37,6 +37,10 @@ Welcome to the Next-Generation Grievance Resolution System, a revolutionary init
 - **Efficient Communication:** Overcoming language barriers through innovative communication solutions.
 - **National Integration:** Unification of existing grievance systems to create a cohesive, national platform.
 
+##Program Flow chart
+
+<img width="380" height="220" src="https://drive.google.com/file/d/1-meijB2GlKMl83FV8iJ11SOG0lOzAYPU/view?usp=sharing" align=right>
+
 ## How It Works
 
 1. **User Registration:** Create an account to access the full range of grievance resolution services.
