@@ -70,19 +70,19 @@ To get started with the Next-Generation Grievance Resolution System, follow thes
 
 We welcome contributions from the community to enhance and improve the Next-Generation Grievance Resolution System. To contribute, please follow our [Contribution Guidelines](CONTRIBUTING.md).
 
- ##Contributors
+## Contributors
 
 Thank you to the following individuals who have contributed to the development of the Next-Generation Grievance Resolution System:
 
-- [Aditya Pratap Singh](https://github.com/johndoe)
-- [Shivam Mishra](https://github.com/janesmith)
-- [Divyanshi](https://github.com/janesmith)
-- [Abhimanhyu](https://github.com/janesmith)
-- [Aryan](https://github.com/janesmith)
-- [Shashank](https://github.com/janesmith)
+- [Aditya Pratap Singh](https://github.com/AdityaPratapSingh888 )
+- [Shivam Mishra](https://github.com/theshivay)
+- [Divyanshi](https://github.com/Divyanshi1611)
+- [Abhimanyu Singh](https://github.com/AbhimanyuSingh2005)
+- [Aryan Srivastava](https://github.com/Aryansrivastava07)
+- [Shashank Srivastava](https://github.com/shank250)
 
 ## Contact
 
-For any inquiries or support, feel free to reach out to us at [support@grievanceresolution.com](mailto:support@grievanceresolution.com).
+For any inquiries or support, feel free to reach out to us at [Ckick here](mailto:shank.svca@gmail.com).
 
 Thank you for joining us on this journey towards a more accessible, transparent, and efficient grievance resolution system!
