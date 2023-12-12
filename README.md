@@ -39,10 +39,10 @@ Welcome to the Next-Generation Grievance Resolution System, a revolutionary init
 
 ## Program Flow chart
 
-<img src="https://iili.io/JTtIq4s.th.png" align=right>
+
 <img src=".\Frontend\assets\ngrs_flowchart.png" align=right>
 
- <img width="380" height="220" src="https://drive.google.com/file/d/1-meijB2GlKMl83FV8iJ11SOG0lOzAYPU/view" align=right> 
+
 <!-- ![Alt text](https://drive.google.com/file/d/1-meijB2GlKMl83FV8iJ11SOG0lOzAYPU/view?usp=sharing) -->
 <!-- [![JTtIq4s.th.png](https://iili.io/JTtIq4s.th.png)](https://freeimage.host/i/JTtIq4s) -->
 <!-- <a href="https://freeimage.host/i/JTtIq4s"><img src="https://iili.io/JTtIq4s.th.png" alt="JTtIq4s.th.png" border="0"></a> -->
