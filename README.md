@@ -2,13 +2,17 @@
 
 Welcome to the Next-Generation Grievance Resolution System, a revolutionary initiative aimed at transforming the way grievances are addressed and resolved. Our project addresses the shortcomings of the current grievance system, providing an innovative, user-friendly, and efficient platform for individuals to seek justice and resolution.
 
+
 ## Table of Contents
 1. [About the Project](#about-the-project)
-2. [Key Features](#key-features)
-3. [How It Works](#how-it-works)
-4. [Getting Started](#getting-started)
-5. [Contributing](#contributing)
-6. [Contact](#contact)
+2. [Uniqueness and Usefulness](#uniqueness-and-usefulness)
+3. [Program Workflow](#program-workflow)
+4. [How It Works](#how-it-works)
+5. [Getting Started](#getting-started)
+6. [Contributors](#contributors)
+7. [Contributing](#contributing)
+8. [Contact](#contact)
+
 
 ## About the Project
 
@@ -28,17 +32,26 @@ Welcome to the Next-Generation Grievance Resolution System, a revolutionary init
 - **Smart Education Distribution:** Distribute smart education materials regarding grievances to empower users with knowledge and understanding.
 - **Timely Assistance:** Victims can receive timely assistance, ensuring a swift and effective resolution process.
 
-## Key Features
+## Uniqueness and Usefulness
 
-- **User-Friendly Interface:** A simple and intuitive interface that streamlines the grievance filing process.
-- **Multilingual Support:** Seamless support for multiple languages to cater to the diverse linguistic landscape.
-- **Transparent Case Tracking:** Real-time updates on the status of filed complaints for increased transparency.
-- **Educational Resources:** Access to comprehensive educational materials to guide users through the grievance resolution process.
-- **Efficient Communication:** Overcoming language barriers through innovative communication solutions.
-- **National Integration:** Unification of existing grievance systems to create a cohesive, national platform.
+### Vector Search and MongoDB Integration
+Our project stands out by incorporating advanced vector search technology on the MongoDB database of employers. This integration significantly enhances accuracy in assigning the correct work to the best-suited employee, streamlining the resolution process.
 
-## Program Flow chart
+### Context-Aware Description
+With our innovative vector search, users can effortlessly describe their problems in a way that is most convenient for them. The advanced language model (LLM) understands the context, ensuring accurate requests for problem resolution.
 
+### Automated Grievance Resolution
+In contrast to traditional grievance resolution systems, our project automates the entire process. Users no longer need to navigate through various government websites and departments. A single description of the problem, followed by a simple click, is all it takes to lodge a complaint.
+
+### Simplified User Experience
+The Next-Generation Grievance Resolution System simplifies the user experience by providing a seamless, one-click solution for lodging complaints. No more complex navigation or departmental logins – just a straightforward and efficient process.
+
+### Time-Saving and Efficient
+By automating the complaint lodging process and utilizing advanced technologies, our system not only saves users valuable time but also ensures a more efficient resolution of their grievances.
+
+
+
+## Program Workflow
 
 <img src=".\Frontend\assets\ngrs_flowchart.png" align=right>
 
