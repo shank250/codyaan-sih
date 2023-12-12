@@ -21,11 +21,11 @@ from langchain.chains import LLMChain
 
 chat_summary = ""
 chat_summary_status = False
-os.environ['OPENAI_API_KEY'] = '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'
+os.environ['OPENAI_API_KEY'] = 'apikey'
 history = ChatMessageHistory()
 user_chat = []
 ai_chat = []
-openai_api_key = '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'
+openai_api_key = 'apikey'
 openai.api_key = openai_api_key
 llm = ChatOpenAI(temperature=0.6)
 
