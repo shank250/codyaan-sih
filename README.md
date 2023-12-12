@@ -37,10 +37,16 @@ Welcome to the Next-Generation Grievance Resolution System, a revolutionary init
 - **Efficient Communication:** Overcoming language barriers through innovative communication solutions.
 - **National Integration:** Unification of existing grievance systems to create a cohesive, national platform.
 
-##Program Flow chart
+## Program Flow chart
 
-<img width="380" height="220" src="https://drive.google.com/file/d/1-meijB2GlKMl83FV8iJ11SOG0lOzAYPU/view?usp=sharing" align=right>
+<img src="https://iili.io/JTtIq4s.th.png" align=right>
+<img src=".\Frontend\assets\ngrs_flowchart.png" align=right>
 
+ <img width="380" height="220" src="https://drive.google.com/file/d/1-meijB2GlKMl83FV8iJ11SOG0lOzAYPU/view" align=right> 
+<!-- ![Alt text](https://drive.google.com/file/d/1-meijB2GlKMl83FV8iJ11SOG0lOzAYPU/view?usp=sharing) -->
+<!-- [![JTtIq4s.th.png](https://iili.io/JTtIq4s.th.png)](https://freeimage.host/i/JTtIq4s) -->
+<!-- <a href="https://freeimage.host/i/JTtIq4s"><img src="https://iili.io/JTtIq4s.th.png" alt="JTtIq4s.th.png" border="0"></a> -->
+<!-- ![letssee](https://glbg.servergi.com:8072/ISIMGLB/App_Themes/Default/images/college-logo.png) -->
 ## How It Works
 
 1. **User Registration:** Create an account to access the full range of grievance resolution services.
@@ -63,6 +69,17 @@ To get started with the Next-Generation Grievance Resolution System, follow thes
 ## Contributing
 
 We welcome contributions from the community to enhance and improve the Next-Generation Grievance Resolution System. To contribute, please follow our [Contribution Guidelines](CONTRIBUTING.md).
+
+ ##Contributors
+
+Thank you to the following individuals who have contributed to the development of the Next-Generation Grievance Resolution System:
+
+- [Aditya Pratap Singh](https://github.com/johndoe)
+- [Shivam Mishra](https://github.com/janesmith)
+- [Divyanshi](https://github.com/janesmith)
+- [Abhimanhyu](https://github.com/janesmith)
+- [Aryan](https://github.com/janesmith)
+- [Shashank](https://github.com/janesmith)
 
 ## Contact
 
