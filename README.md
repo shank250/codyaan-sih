@@ -89,7 +89,7 @@ Thank you to the following individuals who have contributed to the development o
 
 - [Aditya Pratap Singh](https://github.com/AdityaPratapSingh888 )
 - [Shivam Mishra](https://github.com/theshivay)
-- [Divyanshi](https://github.com/Divyanshi1611)
+- [Divyanshi Sharma](https://github.com/Divyanshi1611)
 - [Abhimanyu Singh](https://github.com/AbhimanyuSingh2005)
 - [Aryan Srivastava](https://github.com/Aryansrivastava07)
 - [Shashank Srivastava](https://github.com/shank250)
