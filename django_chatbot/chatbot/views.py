@@ -211,7 +211,6 @@ def chatbot(request):
         history.add_user_message(user_query)
 
         global chat_summary
-        os.environ['OPENAI_API_KEY'] = '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'
         llm = ChatOpenAI(temperature=0.6)
         prompt = ChatPromptTemplate.from_template(
             """You are banking grivance complaint loger. 
