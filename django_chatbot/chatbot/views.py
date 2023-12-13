@@ -60,7 +60,7 @@ def complaint_mongodb():
     dictionary_response["employeeId"] = "rajesh.yadav@gmail.com"
     print(dictionary_response)
     
-    connection_string = "mongodb+srv://codyaanSIH:VEkE6wjohQ9v01De@cluster0.vkfifhe.mongodb.net/?retryWrites=true&w=majority&appName=AtlasApp"
+    connection_string = "Enter your cluster string"
     client = MongoClient(connection_string)
     db = client['test']
     collection = db['complaints']
@@ -92,7 +92,7 @@ def vector_search(chat_summary = chat_summary, user_chat = user_chat):
     vector_search_query = chain.run(summary)
     print(vector_search_query)
   
-    mongo_uri = "mongodb+srv://codyaanSIH:VEkE6wjohQ9v01De@cluster0.vkfifhe.mongodb.net/?retryWrites=true&w=majority&appName=AtlasApp"
+    mongo_uri = "enter your MongoDB cluster URL or connecting string"
     collection_name = "employees"
     client = pymongo.MongoClient(mongo_uri)
     db = client.get_database("test")
